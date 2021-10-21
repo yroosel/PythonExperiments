@@ -1,4 +1,4 @@
-### JSON FILTERING -- DEVICE DATA
+### JSON FILTERING -- DEVICE DATA ###
 
 import json
 ### RULES

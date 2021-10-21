@@ -1,4 +1,4 @@
-### JSON FILTERING -- USER DATA
+### JSON FILTERING -- USER DATA ### 
 
 import json
 ### RULES
