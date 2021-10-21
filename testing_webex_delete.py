@@ -1,8 +1,7 @@
 ####  DELETE WEBEX "DEMO" SPACES
 from webexteamssdk import WebexTeamsAPI
 ### Access Token 12 hours: https://developer.webex.com/docs/api/getting-started (login required)
-current_access_token = "YjU0MGQ4ZDgtMDk2NC00ZjAxLWE3YzktMjNjYTA2NzFmZmE0MzBmZTUyOGMtMmQ5_PF84_e4d4112d-2548-4a47-810e-04fe45ea181f"
-access_token = current_access_token 
+access_token = "insert your own token"
 api = WebexTeamsAPI(access_token=access_token)
 # Find all rooms that should be removed
 all_rooms = api.rooms.list()
