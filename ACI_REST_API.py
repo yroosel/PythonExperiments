@@ -26,7 +26,7 @@ def apic_login():
                     "aaaUser": {
                         "attributes": {
                             "name": "devnetuser",
-                            "pwd": "CardBoardGreen12!"
+                            "pwd": "Insert Password"
                         }
                     }
                 }

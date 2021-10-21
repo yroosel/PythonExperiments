@@ -43,7 +43,7 @@ requests.packages.urllib3.disable_warnings()
 DNAC=os.environ.get('DNAC','sandboxdnac.cisco.com')
 DNAC_PORT=os.environ.get('DNAC_PORT',443)
 DNAC_USER=os.environ.get('DNAC_USER','devnetuser')
-DNAC_PASSWORD=os.environ.get('DNAC_PASSWORD','Cisco123!')
+DNAC_PASSWORD=os.environ.get('DNAC_PASSWORD','InsertYourPassword')
 
 
 def get_auth_token(controller_ip=DNAC, username=DNAC_USER, password=DNAC_PASSWORD):
