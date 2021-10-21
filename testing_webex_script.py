@@ -1,7 +1,7 @@
 import requests 
 import json 
 
-access_token = "YjU0MGQ4ZDgtMDk2NC00ZjAxLWE3YzktMjNjYTA2NzFmZmE0MzBmZTUyOGMtMmQ5_PF84_e4d4112d-2548-4a47-810e-04fe45ea181f"
+access_token = "insert your own token"
 
 groups_struc = {
  "groups": [
