@@ -49,6 +49,7 @@ def main():
     print("Current date and time: ")
     print(datetime.datetime.now())
     print('Creating function apic_login')
+	requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
     ### get token
     token = apic_login()
     print(token)
