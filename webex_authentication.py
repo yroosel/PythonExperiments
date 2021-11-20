@@ -1,13 +1,12 @@
+###  Same as previous cell with interactive input of access token
 import requests
 import json
 import datetime
 print ("Current date and time: ")
 print(datetime.datetime.now())
 print('Starting Cisco Webex Teams API, Get Account Information')
-# This access token may be a (limited duration) personal access token, a Bot token, or an OAuth token from an Integration or Guest Issuer application.
-# Make sure to replace access_token with YOUR access token.
-# Access Token 12 hours: https://developer.webex.com/docs/api/getting-started
-# Bearer
+# Get an Access Token 12 hours: https://developer.webex.com/docs/api/getting-started
+# Bearer Authentication
 webex_acccess_token = input("Access Token? ") 
 url = 'https://api.ciscospark.com/v1/people/me'
 headers = {
