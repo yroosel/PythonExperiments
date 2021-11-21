@@ -13,7 +13,7 @@ api_query = "?"+"key"+"="+api_key+"&"+"address"+"="+address
 uri = main_api + api_query # uri = main_api+"?"+"key"+"="+api_key+"&"+"address"+"="+address
 print('Creating full request: ' + uri)
 resp  = requests.get(uri)
-print("Response Staus Code: " + str(resp.status_code))
+print("Response Status Code: " + str(resp.status_code))
 json_data = resp.json()
 print(json_data)
 
