@@ -16,4 +16,11 @@ resp  = requests.get(uri)
 print("Response Status Code: " + str(resp.status_code))
 json_data = resp.json()
 print(json_data)
+### extra output example
+print('--------------')
+if resp.status_code == 200:
+    print("LOOPING THROUGH RESULTS")
+    for each in json_data["results"][0]["address_components"]:
+        print(each["long_name"])
+print('--------------')
 
