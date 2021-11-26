@@ -1,4 +1,4 @@
-### RESTCONF IETF-INTERFACES
+### RESTCONF IETF-INTERFACES -- CREDENTIALS ENTERED BY USER
 import requests
 import urllib3
 import datetime
@@ -11,7 +11,7 @@ restconf_user = input("Username? ") # cisco
 restconf_psw = input("Password? ")  # cisco123!
 api_url = "https://{0}/restconf/data/ietf-interfaces:interfaces".format(restconf_router_ip)
 print("restconf url: " + api_url)
-# A mistake in the headers generates an HTTP ERROR 406 Not Acceptable
+# A mistake in the headers generates an HHTP ERROR 406 Not Acceptable
 headers = {
     "Accept": "application/yang-data+json",
     "Content-Type": "application/yang-data+json"
