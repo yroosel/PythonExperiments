@@ -1,4 +1,3 @@
-import ncclient
 import xml.dom.minidom
 import datetime
 print ("Current date and time: ")
