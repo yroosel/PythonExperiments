@@ -1,5 +1,5 @@
 import unittest
-import ipv4_subnetmasks_prefixes as prf
+import ipv4 as prf
 
 class test_ip_subnet_prefixes(unittest.TestCase):
 
