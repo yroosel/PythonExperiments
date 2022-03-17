@@ -2,9 +2,9 @@
 
 import json
 ### RULES
-inventory_dict         = {}  #### {"interface": "gi0/1", "ipaddress": "1.2.2.1", "subnetmask": "255.255.255.0", "device": "dv"
-inventory_list         = []  
-rack_struc             = {}  #### YANG MODULE OF CONTAINER {dev_dict_list}
+inventory_dict         = {}  #### YANG CONTAINER {"interface": "gi0/1", "ipaddress": "1.2.2.1", "subnetmask": "255.255.255.0", "device": "dv"
+inventory_list         = []  #### YANG LIST
+rack_struc             = {}  #### YANG MODULE OR CONTAINER {dev_dict_list}
 rack_struc["rack"]     = []  #### YANG CONTAINER {dev_dict_list}
 dev_dict               = {}  #### YANG LEAF {"device": {"dev_name": "n", "role": "r" , interfaces": interface_list}}
 dev_list               = []  #### YANG LIST [dev_dict]  
