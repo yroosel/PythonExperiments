@@ -7,7 +7,7 @@ print ("Current date and time: ")
 print(datetime.datetime.now())
 print('Creating function apic_login')
 
-APIC_URL = "https://devasc-aci-1.cisco.com/"
+APIC_URL = "https://sandboxapicdc.cisco.com"
 
 def apic_login():
     """ Login to APIC """
