@@ -1,6 +1,6 @@
 import requests 
 import json 
-
+### Access Token 12 hours: https://developer.webex.com/docs/api/getting-started (login required)
 access_token = "insert your own token"
 
 groups_struc = {
