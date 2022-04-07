@@ -26,7 +26,7 @@ def apic_login():
                     "aaaUser": {
                         "attributes": {
                             "name": "admin",
-                            "pwd": "Insert Password"
+                            "pwd": "Insert Your Password"
                         }
                     }
                 }
