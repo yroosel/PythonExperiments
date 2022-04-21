@@ -4,7 +4,9 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import datetime
 
-APIC_URL = "https://devasc-aci-1.cisco.com/"
+APIC_URL = "https://sandboxapicdc.cisco.com"
+APIC_USER = "***UPON REQUEST***"
+APIC_PW = "***UPON REQUEST***"
 
 def apic_login():
     """ Login to APIC """
@@ -22,8 +24,8 @@ def apic_login():
                 {
                     "aaaUser": {
                         "attributes": {
-                            "name": "***UPON REQUEST***",
-                            "pwd": "***UPON REQUEST***"
+                            "name": APIC_USER,
+                            "pwd": APIC_PW
 
                         }
                     }
