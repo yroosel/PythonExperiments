@@ -70,4 +70,3 @@ print(g["device"].keys())
 print('------3A---------')
 print("Keys interfaces")
 print(g["device"]["interfaces"][0].keys())
-

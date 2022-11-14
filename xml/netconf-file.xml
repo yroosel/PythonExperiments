@@ -1,0 +1,12 @@
+<rpc xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" message-id="1">
+<edit-config>
+<target>
+<candidate/>
+</target>
+<default-operation>merge</default-operation>
+<test-option>set</test-option>
+<config>
+<int8.1 xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0" xmlns="http://netconfcentral.org/ns/test" nc:operation="create">9</int8.1>
+</config>
+</edit-config>
+</rpc>
