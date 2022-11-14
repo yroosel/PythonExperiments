@@ -7,7 +7,7 @@ api_scheme = "https://"
 api_authority = "maps.googleapis.com"
 api_path = "/maps/api/geocode/json"
 main_api = api_scheme + api_authority + api_path #main_api = "https://maps.googleapis.com/maps/api/geocode/json"
-api_key = input("Paste API Key ") # AIzaSyAbs6bmOVHY5qMft5lw-SIK4FpMOOqXW7Y
+api_key = input("Paste API Key ")  
 address = input("Please enter: Full Address, Town or City? ")
 api_query = "?"+"key"+"="+api_key+"&"+"address"+"="+address
 uri = main_api + api_query # uri = main_api+"?"+"key"+"="+api_key+"&"+"address"+"="+address
