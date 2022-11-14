@@ -7,7 +7,7 @@ import requests
 requests.packages.urllib3.disable_warnings()
 
 #### Step 2: Create the variables that will be the components of the request
-IP_ADDRESS = = input("Virtual Router IP Address? ") 
+IP_ADDRESS = input("Virtual Router IP Address? ") 
 RESTCONF_USERNAME = input("Virtual Router Username? ") 
 RESTCONF_PASSWORD = input("Virtual Router Password? ")  
 basicauth = (RESTCONF_USERNAME, RESTCONF_PASSWORD)
