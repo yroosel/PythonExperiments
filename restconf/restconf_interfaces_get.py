@@ -7,9 +7,9 @@ import requests
 requests.packages.urllib3.disable_warnings()
 
 #### Step 2: Create the variables that will be the components of the request
-IP_ADDRESS = "192.168.56.107"
-RESTCONF_USERNAME="cisco"
-RESTCONF_PASSWORD="cisco123!"
+IP_ADDRESS = = input("Virtual Router IP Address? ") 
+RESTCONF_USERNAME = input("Virtual Router Username? ") 
+RESTCONF_PASSWORD = input("Virtual Router Password? ")  
 basicauth = (RESTCONF_USERNAME, RESTCONF_PASSWORD)
 api_url = f"https://{IP_ADDRESS}/restconf/data/ietf-interfaces:interfaces"
 headers = { "Accept": "application/yang-data+json",  "Content-type":"application/yang-data+json" }
