@@ -17,7 +17,7 @@ DNAC_psw = input("Password? ")
 #REQUEST TOKEN BASED ON devnetuser Cicso123!
 token_req_url = DNAC_scheme+DNAC_authority+DNAC_path_token
 auth = (DNAC_user, DNAC_psw)
-req = requests.post(token_req_url, auth=(DNAC_user, DNAC_psw), verify=False)
+req = requests.post(token_req_url, auth=auth, verify=False)
 print("API Return Code: " + str(req.status_code))  
 print('Request URI: ' + token_req_url)
 print("Username: " + DNAC_user)
