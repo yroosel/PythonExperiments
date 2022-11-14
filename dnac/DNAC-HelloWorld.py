@@ -14,7 +14,7 @@ DNAC_path='/dna/intent/api/v1/network-device'
 #### IT IS NECESSARY TO HAVE A USERNAME AND PASSWORD
 DNAC_user = input("Username? ") 
 DNAC_psw = input("Password? ")  
-#REQUEST TOKEN BASED ON USERNAME AND PASSWORD
+#REQUEST TOKEN BASED ON USERNAME AND PASSWORD devnetuser Cicso123!
 token_req_url = DNAC_scheme+DNAC_authority+DNAC_path_token
 auth = (DNAC_user, DNAC_psw)
 req = requests.post(token_req_url, auth=(DNAC_user, DNAC_psw), verify=False)
@@ -22,7 +22,7 @@ print("API Return Code: " + str(req.status_code))
 print('Request URI: ' + token_req_url)
 print("Username: " + DNAC_user)
 resp = req.text
-token = req.json()['Token']
+token = req.json()["Token"]
 print("Received Token:")
 print(token)
 print("Length Token:")
