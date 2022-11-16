@@ -1,4 +1,4 @@
-### XML Parsing into json => easier than xml.etree above
+### XML Parsing into json => easier than xml.etree
 ###!pip install xmltodict
 import datetime
 print ("Current date and time: ")

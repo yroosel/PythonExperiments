@@ -6,20 +6,15 @@ Code has been tested. In some cases it is necessary to obtain a username and pas
 ---
   
 ## Requirements
-**Python **
+**Python**
 - check necessary libraries and install them in your Python environemnt
 
 # Getting Started 
-```bash 
+"""bash 
 # Create a folder
 $ mkdir GIT_DEVASC
 # Clone the Python Code Examples 
 $ git clone https://github.com/yroosel/PythonExperiments.git
 # Change into the new directory
 $ cd PythonExperiments  
-<<<<<<< HEAD
-=======
-    
-    
-    
->>>>>>> 03cb04633a5dc883e2ec2797bb99c721de8fe30b
+
