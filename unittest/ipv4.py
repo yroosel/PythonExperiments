@@ -4,6 +4,7 @@
 ##   Getting numer of hosts for a specific prefix
 ##   Data based solution, without calc => learning dict and json
 #### USE UNITTEST TO CHECK THE CORRECTNESS OF THE FIVE FUNCTIONS
+#### Updated 16 FEB 2023
 
 netmask_prefixes = {
      '255.255.255.255': '/32'
