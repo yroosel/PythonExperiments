@@ -14,7 +14,7 @@ DNAC_path='/dna/intent/api/v1/network-device'
 #### IT IS NECESSARY TO HAVE A USERNAME AND PASSWORD
 DNAC_user = input("Username? ") 
 DNAC_psw = input("Password? ")  
-#REQUEST TOKEN BASED ON devnetuser Cicso123!
+#REQUEST TOKEN BASED ON devnetuser Cisco123!
 token_req_url = DNAC_scheme+DNAC_authority+DNAC_path_token
 auth = (DNAC_user, DNAC_psw)
 req = requests.post(token_req_url, auth=auth, verify=False)
