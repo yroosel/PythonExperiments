@@ -14,7 +14,7 @@ def divide(n1, n2):
         return ("Error: Division by Zero")
 
 def main():
-    print (add(110,10))
+    print (add(100,10))
     print (subtract(100,10))
     print (multiply(100,10))
     print (divide(100,10))
