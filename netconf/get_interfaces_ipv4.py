@@ -13,8 +13,8 @@ HOST = "192.168.56.101"
 # use the NETCONF port for your IOS-XE device
 PORT = 830
 # use the user credentials for your IOS-XE device
-USER = "cisco"
-PASS = "cisco123!"
+USER = "xxxxx"
+PASS = "xxxxx"
 # XML file to open
 FILE = 'get_interfaces_ipv4.xml'
 
