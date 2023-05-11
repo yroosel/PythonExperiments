@@ -65,3 +65,4 @@ netconf_data = netconf_interface_template.format(
 )
 
 netconf_reply = m.edit_config(netconf_data, target = 'running')
+m.close_session()
