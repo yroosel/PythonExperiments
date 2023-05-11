@@ -41,4 +41,5 @@ for capability in m.server_capabilities:
     print (capability)
     i = i+1
 print(i)
+m.close_session()
 
