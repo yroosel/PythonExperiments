@@ -16,7 +16,7 @@ PORT = 830
 USER = "cisco"
 PASS = "cisco123!"
 # XML file to open
-FILE = 'get_interfaces.xml'
+FILE = 'get_interfaces_ipv4.xml'
 
 
 # create a main() method
