@@ -9,7 +9,7 @@ import xml.dom.minidom
 # the variables below assume the user is requesting access
 # to a IOS-XE device running in the DevNet Always On SandBox
 # use the IP address or hostname of your IOS-XE device
-HOST = "192.168.56.101"
+HOST = "x.y.z.101"
 # use the NETCONF port for your IOS-XE device
 PORT = 830
 # use the user credentials for your IOS-XE device
