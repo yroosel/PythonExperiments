@@ -54,3 +54,4 @@ print("Here is the raw XML data returned from the device.\n")
 # Print out the raw XML that returned
 print(xml.dom.minidom.parseString(netconf_reply.xml).toprettyxml())
 print("")
+m.close_session()
