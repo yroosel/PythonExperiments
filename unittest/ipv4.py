@@ -122,7 +122,7 @@ def get_network_bits(p_subnet_mask):
 
 if __name__ == "__main__":
     ### dev test function via prefix
-    subnet_mask = ('255.255.255.224')
+    subnet_mask = ('255.255.255.252')
     print(subnet_mask)
     net_prefix = get_net_prefix(subnet_mask)
     print(net_prefix)
