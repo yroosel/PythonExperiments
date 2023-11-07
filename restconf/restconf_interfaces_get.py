@@ -11,7 +11,7 @@ IP_ADDRESS = input("Virtual Router IP Address or Domain Name? ")
 RESTCONF_USERNAME = input("Virtual Router Username? ") 
 RESTCONF_PASSWORD = input("Virtual Router Password? ")  
 basicauth = (RESTCONF_USERNAME, RESTCONF_PASSWORD)
-api_url = f"https://{IP_ADDRESS}/restconf/data/ietf-interfaces:interfaces"
+api_url = f"https://{IP_ADDRESS}/restconf/data/ietf-interfaces:interfaces/interface={LOOPBACK_INTERFACE}"
 headers = { "Accept": "application/yang-data+json",  "Content-type":"application/yang-data+json" }
 
 
