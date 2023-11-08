@@ -1,12 +1,13 @@
 ### ENABLE LOGGING MONITOR
 from netmiko import ConnectHandler
-IP_ADDRESS = "Get IP Address"
+IP_ADDRESS = "192.168.56.101" #"Get IP Address"
 sshCli = ConnectHandler(
     device_type="cisco_ios",
     host=IP_ADDRESS,
     port="22",
-    username="Get Username",
-    password="Get Password"
+    
+    username="cisco",
+    password="cisco123!"
     )
 config_commands = (
     'logging monitor' ,

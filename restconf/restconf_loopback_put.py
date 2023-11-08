@@ -5,10 +5,11 @@ import json
 import requests
 requests.packages.urllib3.disable_warnings()
 #### Step 2: Create the variables that will be the components of the request
-IP_ADDRESS = "Get IP Address"
-RESTCONF_USERNAME="Get Username"
-RESTCONF_PASSWORD="Get Password"
-api_url = f"https://{IP_ADDRESS}/restconf/data/ietf-interfaces:interfaces/interface=Loopback101"
+IP_HOST="192.168.56.101"
+RESTCONF_USERNAME="cisco"
+RESTCONF_PASSWORD="cisco123!"
+DATA_FORMAT="application/yang-data+json"
+api_url = f"https://{IP_HOST}/restconf/data/ietf-interfaces:interfaces/interface=Loopback101"
 headers = { "Accept": "application/yang-data+json",  "Content-type":"application/yang-data+json"  }
 basicauth = (RESTCONF_USERNAME, RESTCONF_PASSWORD)
 
