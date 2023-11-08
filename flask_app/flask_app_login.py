@@ -6,7 +6,7 @@ import hashlib
 
 microweb_app = Flask(__name__)
 
-db_name = 'login.db'
+db_name = 'user.db'
 
 #### RE-INTIALIZING DATABASE => deleting all records from test database
 @microweb_app.route('/delete/all', methods=['POST', 'DELETE'])

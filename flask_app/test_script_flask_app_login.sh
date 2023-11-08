@@ -2,8 +2,10 @@
 # programm flask_app_login needs to be running
 echo "Deleting all test records"
 curl -k -X DELETE "https://127.0.0.1:5555/delete/all"
-INSECURE_USER="USER_INSECURE_007"
-INSECURE_PW="123456007"
+INSECURE_USER="INSEC_001"
+INSECURE_PW="123456789"
+SECURE_USER="SEC_007"
+SECURE_PW="VSP_00--01_PSV"
 echo 'Creating new user v1 insecure'
 curl -k -X POST -F 'username='$INSECURE_USER -F 'password='$INSECURE_PW 'https://127.0.0.1:5555/signup/v1'
 echo "Testing login v1"

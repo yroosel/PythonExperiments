@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Current Date and Time</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #date-time {
+            font-size: 24px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Current Date and Time</h1>
+    <div id="date-time"></div>
+
+    <script>
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById('date-time');
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+            const formattedDateTime = now.toLocaleDateString('en-US', options);
+            dateTimeElement.textContent = formattedDateTime;
+        }
+
+        // Update the date and time immediately and then refresh it every second
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
