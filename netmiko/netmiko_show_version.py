@@ -16,4 +16,13 @@ sshCli = ConnectHandler(
     password="cisco123!"
     )
 output=sshCli.send_command("show version")
-print(output)
+for line in output.splitlines():
+    if 'Cisco IOS Software' in line:
+        ios_version = line.strip()
+    elif 'interface' in line:
+        num_interfaces = line.split()[0]
+print("IOS Version")
+print(ios_version)
+print("Number of Interfaces")
+print(num_interfaces)
+
