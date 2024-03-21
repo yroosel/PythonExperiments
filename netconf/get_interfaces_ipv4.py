@@ -5,28 +5,22 @@
 from ncclient import manager
 import sys
 import xml.dom.minidom
-
-# the variables below assume the user is requesting access
-# to a IOS-XE device running in the DevNet Always On SandBox
-# use the IP address or hostname of your IOS-XE device
-HOST = "192.168.56.101"
-# use the NETCONF port for your IOS-XE device
-PORT = 830
-# use the user credentials for your IOS-XE device
-USER = "cisco"
-PASS = "cisco123!"
+NETCONF_ROUTER_IP = "192.168.56.101"
+NETCONF_SSH_PORT = "830"
+NETCONF_user = "cisco"
+NETCONF_psw = "cisco123!"
 # XML file to open
-FILE = 'get_interfaces_ipv4.xml'
+XML_FILE = 'get_interfaces_ipv4.xml'
 
 
 # create a main() method
 def get_configured_interfaces():
     """Main method that retrieves the interfaces from config via NETCONF."""
-    with manager.connect(host=HOST, port=PORT, username=USER, password=PASS,
+    with manager.connect(host=NETCONF_ROUTER_IP, port=NETCONF_SSH_PORT, username=NETCONF_user, password=NETCONF_psw,
                          hostkey_verify=False, device_params={'name': 'default'},
                          allow_agent=False, look_for_keys=False) as m:
 
-        with open(FILE) as f:
+        with open(XML_FILE) as f:
             return(m.get_config('running', f.read()))
 
 

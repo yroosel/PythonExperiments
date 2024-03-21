@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Current Location on OpenStreetMap</title>
+    <!-- Include Leaflet CSS and JavaScript -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <!-- Define the map container's CSS styles -->
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Current Location on OpenStreetMap</h1>
+
+    <!-- Create a div element to hold the map -->
+    <div id="map"></div>
+
+    <script>
+        // Initialize the map and set its view to a default location
+        var map = L.map('map').setView([0, 0], 13);
+
+        // Add an OpenStreetMap tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Function to get the user's current location and display it on the map
+        function showCurrentLocation() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    var lat = position.coords.latitude;
+                    var lng = position.coords.longitude;
+
+                    // Set the map view to the user's current location
+                    map.setView([lat, lng], 13);
+
+                    // Add a marker to the map to indicate the user's location
+                    L.marker([lat, lng]).addTo(map);
+                });
+            } else {
+                alert("Geolocation is not supported by your browser.");
+            }
+        }
+
+        // Call the showCurrentLocation function to display the user's current location
+        showCurrentLocation();
+    </script>
+</body>
+</html>

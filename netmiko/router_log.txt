@@ -1,0 +1,58 @@
+Syslog logging: enabled (0 messages dropped, 2 messages rate-limited, 0 flushes, 0 overruns, xml disabled, filtering disabled)
+
+No Active Message Discriminator.
+
+
+
+No Inactive Message Discriminator.
+
+
+    Console logging: level debugging, 115 messages logged, xml disabled,
+                     filtering disabled
+    Monitor logging: level debugging, 0 messages logged, xml disabled,
+                     filtering disabled
+    Buffer logging:  level debugging, 115 messages logged, xml disabled,
+                    filtering disabled
+    Exception Logging: size (4096 bytes)
+    Count and timestamp logging messages: disabled
+    Persistent logging: disabled
+
+No active filter modules.
+
+    Trap logging: level informational, 113 message lines logged
+        Logging Source-Interface:       VRF Name:
+
+Log Buffer (5000 bytes):
+v  7 18:05:18.115: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:05:35.590: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:05:58.581: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:06:54.729: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:09:09.907: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:09:31.179: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:10:12.568: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:10:36.678: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:11:07.300: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:11:50.880: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:12:04.472: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:12:24.608: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:13:27.696: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:14:01.489: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:14:49.173: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:16:51.212: %LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback101, changed state to up
+*Nov  7 18:16:51.106: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:16:51.224: %DMI-5-CONFIG_I: R0/0: nesd: Configured from NETCONF/RESTCONF by cisco, transaction-id 105
+*Nov  7 18:17:27.058: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:18:10.169: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:20:21.630: %DMI-5-AUTH_PASSED: R0/0: dmiauthd: User 'cisco' authenticated successfully from 192.168.56.1:0 and was authorized for rest over http. External groups: PRIV15
+*Nov  7 18:26:38.100: %SYS-5-CONFIG_I: Configured from console by console
+*Nov  7 18:31:08.866: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: cisco] [Source: 192.168.56.1] [localport: 22] at 18:31:08 UTC Tue Nov 7 2023
+*Nov  7 18:31:14.181: %SYS-6-LOGOUT: User cisco has exited tty session 1(192.168.56.1)
+*Nov  7 18:31:47.772: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: cisco] [Source: 192.168.56.1] [localport: 22] at 18:31:47 UTC Tue Nov 7 2023
+*Nov  7 18:31:53.081: %SYS-6-LOGOUT: User cisco has exited tty session 1(192.168.56.1)
+*Nov  7 18:34:50.071: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: cisco] [Source: 192.168.56.1] [localport: 22] at 18:34:50 UTC Tue Nov 7 2023
+*Nov  7 18:34:55.549: %SYS-6-LOGOUT: User cisco has exited tty session 1(192.168.56.1)
+*Nov  7 18:36:38.979: %SYS-6-TTY_EXPIRE_TIMER: (exec timer expired, tty 0 (0.0.0.0)), user 
+*Nov  7 18:37:27.105: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: cisco] [Source: 192.168.56.1] [localport: 22] at 18:37:27 UTC Tue Nov 7 2023
+*Nov  7 18:37:32.035: %SYS-5-CONFIG_I: Configured from console by cisco on vty0 (192.168.56.1)
+*Nov  7 18:37:33.002: %SYS-6-LOGOUT: User cisco has exited tty session 1(192.168.56.1)
+*Nov  7 18:38:22.359: %SEC_LOGIN-5-LOGIN_SUCCESS: Login Success [user: cisco] [Source: 192.168.56.1] [localport: 22] at 18:38:22 UTC Tue Nov 7 2023

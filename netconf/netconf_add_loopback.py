@@ -6,10 +6,10 @@ from ncclient import manager
 import datetime
 print ("Current date and time: ")
 print(datetime.datetime.now())
-NETCONF_ROUTER_IP = "192.168.56.107"
+NETCONF_ROUTER_IP = "192.168.56.101"
 NETCONF_SSH_PORT = "830"
-NETCONF_user = input("Username? ")  # ciscocisco
-NETCONF_psw = input("Password? ")   # cisco123!
+NETCONF_user = "cisco"
+NETCONF_psw = "cisco123!"
 ### ** kwargs
 m = manager.connect(
         host=NETCONF_ROUTER_IP,

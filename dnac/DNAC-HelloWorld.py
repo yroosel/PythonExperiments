@@ -6,14 +6,14 @@ requests.packages.urllib3.disable_warnings()
 print ("Current date and time: ")
 print(datetime.datetime.now())
 # HARD CODED VARIABLES
-DNAC_scheme = 'https://'
-DNAC_authority='sandboxdnac.cisco.com'
-DNAC_port=':443'
-DNAC_path_token='/dna/system/api/v1/auth/token'
-DNAC_path='/dna/intent/api/v1/network-device'
+DNAC_scheme = "https://"
+DNAC_authority="sandboxdnac.cisco.com"
+DNAC_port=":443"
+DNAC_path_token="/dna/system/api/v1/auth/token"
+DNAC_path="/dna/intent/api/v1/network-device"
 #### IT IS NECESSARY TO HAVE A USERNAME AND PASSWORD
-DNAC_user = input("Username? ") 
-DNAC_psw = input("Password? ")  
+DNAC_user = "devnetuser"
+DNAC_psw = "Cisco123!"
 #REQUEST TOKEN BASED ON devnetuser Cisco123!
 token_req_url = DNAC_scheme+DNAC_authority+DNAC_path_token
 auth = (DNAC_user, DNAC_psw)
@@ -35,7 +35,7 @@ resp_devices = requests.request('GET', req_url, headers=headers, verify=False)
 print(resp_devices)
 resp_devices_json = resp_devices.json()
 #print("Response (json):")
-#print(json.dumps(resp_devices_json, indent=4))
+print(json.dumps(resp_devices_json, indent=4))
 print('Inventory Request - Filtering output')
 # RESPONSE DATA: OUTPUT USING A LOOP TO PROCESS LIST ITEMS
 for device in resp_devices_json['response']:

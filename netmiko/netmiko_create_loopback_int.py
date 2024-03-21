@@ -10,8 +10,14 @@ sshCli = ConnectHandler(
     password="cisco123!"
     )
 config_commands = (
-    'logging monitor' ,
+    'interface loopback 101' , 'ip address 10.1.0.101 255.255.255.0'
     )
+print("Initial Interface Config")
+output=sshCli.send_command("show ip interface brief")
+print(output)
+print("Configuring Interface")
 output=sshCli.send_config_set(config_commands)
-output=sshCli.send_command("show logging")
+print(output)
+output=sshCli.send_command("show ip interface brief")
+print("Final Interface Config")
 print(output)

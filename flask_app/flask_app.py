@@ -12,4 +12,7 @@ def main():
 
 if __name__ == "__main__":
     microweb_app.run(host="0.0.0.0", port=5555)
-    
+    @microweb_app.route("/map")
+def map():
+    return render_template("map.html")
+
