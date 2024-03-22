@@ -2,8 +2,8 @@ import requests
 requests.packages.urllib3.disable_warnings()
 
 IP_HOST="192.168.56.101"
-RESTCONF_USERNAME="cisco"
-RESTCONF_PASSWORD="cisco123!"
+RESTCONF_USERNAME="Enter Your Username"
+RESTCONF_PASSWORD="Enter Your Password"
 DATA_FORMAT="application/yang-data+json"
 LOOPBACK_INTERFACE="Loopback11"
 LOOPBACK_IP="10.1.1.11"
