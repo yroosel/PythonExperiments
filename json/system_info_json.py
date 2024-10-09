@@ -15,7 +15,7 @@ system_info = {
         "Type": "Basic",
         "File System": "",
         "Status": "Healthy",
-        " Capacity": "300 MB",
+        "Capacity": "300 MB",
         "Free Space": "300 MB",
         "% Free": "100%"
     },
@@ -25,7 +25,7 @@ system_info = {
         "Type": "Basic",
         "File System": "",
         "Status": "Healthy",
-        " Capacity": "900 MB",
+        "Capacity": "900 MB",
         "Free Space": "900 MB",
         "% Free": "100%"
     },
@@ -35,7 +35,7 @@ system_info = {
         "Type": "Basic",
         "File System": "",
         "Status": "Healthy",
-        " Capacity": "20,34 MB",
+        "Capacity": "20,34 MB",
         "Free Space": "20,34 MB",
         "% Free": "100%"
     },
@@ -45,7 +45,7 @@ system_info = {
         "Type": "Basic",
         "File System": "exFAT",
         "Status": "Healthy",
-        " Capacity": "465,75",
+        "Capacity": "465,75",
         "Free Space": "306,57",
         "% Free": "66%"
     },
@@ -55,7 +55,7 @@ system_info = {
         "Type": "Basic",
         "File System": "NTFS",
         "Status": "Healthy",
-        " Capacity": "445,13 GB",
+        "Capacity": "445,13 GB",
         "Free Space": "444,97 GB",
         "% Free": "100%"
     },
@@ -65,7 +65,7 @@ system_info = {
         "Type": "Basic",
         "File System": "NTFS",
         "Status": "Healthy",
-        " Capacity": "30,63 GB",
+        "Capacity": "30,63 GB",
         "Free Space": "515 MB",
         "% Free": "2%"
     },
@@ -75,7 +75,7 @@ system_info = {
         "Type": "Basic",
         "File System": "NTFS",
         "Status": "Healthy",
-        " Capacity": "932,23 GB",
+        "Capacity": "932,23 GB",
         "Free Space": "821,95 GB",
         "% Free": "88%"
     }
