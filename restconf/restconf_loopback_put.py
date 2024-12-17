@@ -5,7 +5,6 @@ import json
 import requests
 requests.packages.urllib3.disable_warnings()
 #### Step 2: Create the variables that will be the components of the request
-#IP_HOST="192.168.56.101"
 IP_HOST="https://sandboxdnac.cisco.com"
 RESTCONF_USERNAME="Enter your username"
 RESTCONF_PASSWORD="Enter your password"
