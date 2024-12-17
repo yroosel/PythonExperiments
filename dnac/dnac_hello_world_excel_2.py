@@ -8,7 +8,7 @@ requests.packages.urllib3.disable_warnings()
 
 # Constants for DNA Center API access
 DNAC_SCHEME = 'https://'
-DNAC_AUTHORITY = 'sandboxdnac2.cisco.com'
+DNAC_AUTHORITY = 'sandboxdnac.cisco.com'
 DNAC_PORT = ':443'
 DNAC_PATH_TOKEN = '/dna/system/api/v1/auth/token'
 DNAC_PATH_NETWORK_DEVICES = '/dna/intent/api/v1/network-device'
