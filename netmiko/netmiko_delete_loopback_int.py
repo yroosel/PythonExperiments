@@ -1,4 +1,4 @@
-### ENABLE LOGGING MONITOR
+### DELETE LOOBBACK
 from netmiko import ConnectHandler
 IP_ADDRESS = "192.168.56.101" #"Get IP Address"
 sshCli = ConnectHandler(
