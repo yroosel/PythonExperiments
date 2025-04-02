@@ -4,7 +4,7 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 import datetime
 
-APIC_URL = "https://sandboxapicdc.cisco.com"
+APIC_URL = "your URL"
 
 def apic_login():
     """ Login to APIC """
@@ -18,8 +18,8 @@ def apic_login():
             data=json.dumps({
                 "aaaUser": {
                     "attributes": {
-                        "name": "admin",
-                        "pwd": "!v3G@!4@Y"
+                        "name": "your username",
+                        "pwd": "your password"
                     }
                 }
             }),
