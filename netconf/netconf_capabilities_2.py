@@ -11,8 +11,8 @@ print('Setup connection using the manager.connect() function')
 print('Using hard-coded variable values for training purposes')
 NETCONF_ROUTER_IP = "192.168.56.101"
 NETCONF_SSH_PORT = "830"
-NETCONF_user = "cisco"
-NETCONF_psw = "cisco123!"
+NETCONF_user = "Your User"
+NETCONF_psw = "Your Password"
 print('------1-------')
 print('NETCONF <hello> Operation')
 """
