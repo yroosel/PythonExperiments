@@ -1,37 +1,30 @@
 from ncclient import manager
+from ncclient.xml_ import to_ele
 import xml.dom.minidom
-import datetime
-print ("Current date and time: ")
-print(datetime.datetime.now())
-print('Starting NETCONFIG')
-print('Connecting to virtual router with ncclient')
-NETCONF_ROUTER_IP = "192.168.56.101"
-NETCONF_SSH_PORT = "830"
-NETCONF_user = "cisco"
-NETCONF_psw = "cisco123!"
-# FILTER is needed for netconf
-FILTER = """
+
+# Device details
+HOST = "192.168.56.105"
+USER = "cisco"
+PASS = "cisco123!"
+PORT = 830
+
+# Filter for Cisco native model
+netconf_filter = """
 <filter>
-  <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-    <interface>
-       <name></name>
-    </interface>
-  </interfaces>
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"/>
 </filter>
 """
-# CONNECTING
-m = manager.connect(
-        host=NETCONF_ROUTER_IP,
-        port=NETCONF_SSH_PORT,
-        username=NETCONF_user,
-        password=NETCONF_psw,
-        hostkey_verify=False
-        )
-# OUTPUTS
-print("Connection Succeeded:", end=" ")
-print(m.connected)
-print('Retrieving get-config from virtual router')
-netconfig_reply = m.get_config("running", FILTER)
-print('Parsing and printing XML')
-print(xml.dom.minidom.parseString(netconfig_reply.xml).toprettyxml())
-m.close_session()
+
+with manager.connect(
+    host=HOST,
+    port=PORT,
+    username=USER,
+    password=PASS,
+    hostkey_verify=False,
+    device_params={'name': 'csr'}
+) as m:
+
+    reply = m.get_config(source='running', filter=to_ele(netconf_filter))
+
+    # Pretty print the XML
+    print(xml.dom.minidom.parseString(reply.xml).toprettyxml())
