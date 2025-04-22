@@ -14,6 +14,7 @@ netconf_filter = """
 </filter>
 """
 m = manager.connect(host=HOST, port=PORT, username=USER, password=PASS, hostkey_verify=False, device_params={'name': 'csr'})
+# 'csr' refers to Cisco CSR1000v
 
 reply = m.get_config(source='running', filter = netconf_filter)
 # Pretty print the XML reply
