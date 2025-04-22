@@ -4,8 +4,8 @@ import xml.dom.minidom
 
 # Device details
 HOST = "192.168.56.105"
-USER = "cisco"
-PASS = "cisco123!"
+USER = "Your User"
+PASS = "Your Password"
 PORT = 830
 
 # Filter for Cisco native model
