@@ -3,7 +3,7 @@ from ncclient.xml_ import to_ele
 import xml.dom.minidom
 
 # Device details
-HOST = "192.168.56.105"
+HOST = "192.168.56.101"
 USER = "Your User"
 PASS = "Your Password"
 PORT = 830
