@@ -3,18 +3,14 @@ import xml.dom.minidom
 
 # Courseware Cisco DevNet Sandbox
 HOST = "192.168.56.101"
-USER = "cisco"
-PASS = "cisco123!"
+USER = "Your User"
+PASS = "Your Password"
 PORT = 830
 
 # filter
 netconf_filter = """
 <filter>
-  <interfaces xmlns="urn:ietf:params:xml:ns:yang:ietf-interfaces">
-    <interface>
-       <name>GigabitEthernet1</name>
-    </interface>
-  </interfaces>
+  <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native"/>
 </filter>
 """
 m = manager.connect(host=HOST, port=PORT, username=USER, password=PASS, hostkey_verify=False, device_params={'name': 'csr'})
