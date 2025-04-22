@@ -7,8 +7,8 @@ import sys
 import xml.dom.minidom
 NETCONF_ROUTER_IP = "192.168.56.101"
 NETCONF_SSH_PORT = "830"
-NETCONF_user = "cisco"
-NETCONF_psw = "cisco123!"
+NETCONF_user = "Your User"
+NETCONF_psw = "Your Password"
 # XML file to open
 XML_FILE = 'get_interfaces_ipv4.xml'
 
