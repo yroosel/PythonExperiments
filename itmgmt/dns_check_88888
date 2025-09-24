@@ -1,0 +1,30 @@
+SERVERS = ["1.1.1.1", "8.8.8.8"]  # override via CLI if you like
+
+def dig_first_answer(name: str, rtype: str, servers=SERVERS) -> str:
+    """Run dig against a list of servers, return the first non-empty ANSWER.
+       Falls back to '(no answer)' if all are empty."""
+    base = ["dig", "+retry=0", "+timeout=2", "+noall", "+answer"]
+    for s in servers:
+        cmd = ["dig", f"@{s}", name, rtype, "+retry=0", "+timeout=2", "+noall", "+answer"]
+        try:
+            out = subprocess.check_output(cmd, text=True, stderr=subprocess.STDOUT)
+            if out.strip():
+                return out
+        except Exception:
+            pass
+    return "(no answer)\n"
+
+# Use it like:
+print("===========\nNS biasc.be\n===========")
+print(dig_first_answer("biasc.be", "NS"))
+
+print("\n============\nSOA biasc.be\n============")
+print(dig_first_answer("biasc.be", "SOA"))
+
+print("\n==========\nA biasc.be\n==========")
+print(dig_first_answer("biasc.be", "A"))
+
+print("\n==================\nCNAME www.biasc.be\n==================")
+print(dig_first_answer("www.biasc.be", "CNAME"))
+
+# ... and so on for AAAA, MX, TXT, CAA, etc.
