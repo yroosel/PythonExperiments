@@ -14,5 +14,5 @@ if_dict = {"ietf-interfaces:interfaces":
           }
 print(type(if_dict))
 print(if_dict)
-if_json = json.dumps(if_json, indent=2)
+if_json = json.dumps(if_dict, indent=2)
 print(if_json)
