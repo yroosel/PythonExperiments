@@ -1,3 +1,5 @@
+# Practice json and dict structures, transform into yaml
+import json
 if_json = {"ietf-interfaces:interfaces": 
         {"interface": [
             {"name": "GigabitEthernet1", "description": "VBox", "type": "iana-if-type:ethernetCsmacd", "enabled": True, 
