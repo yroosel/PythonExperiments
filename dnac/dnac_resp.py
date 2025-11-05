@@ -24,7 +24,7 @@ dnac_resp = {
 dev_list = []   #create empty list
 # looping through results and filter needed information
 # creating new JSON structure
-for device  in resp['response']:
+for device  in dnac_resp['response']:
     if device['type'] != None:
         dev_dict = {} #create empty dict
         dev_dict['hostname'] = device['hostname']
