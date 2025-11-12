@@ -1,3 +1,7 @@
+"""
+Cisco CSR1000v / IOS XE 16.9+ RESTCONF Inventory Script
+Collects device characteristics, interfaces, routing, and neighbor info.
+"""
 ###  unified Python RESTCONF script optimized for Cisco CSR1000v / IOS XE 16.9, including:
 ### Hostname
 ### Platform + Software Version
@@ -6,13 +10,7 @@
 ### OSPF info (if configured)
 ### CDP/LLDP neighbors
 ### It automatically skips unsupported or empty datasets.
-
 #!/usr/bin/env python3
-"""
-Cisco CSR1000v / IOS XE 16.9+ RESTCONF Inventory Script
-Collects device characteristics, interfaces, routing, and neighbor info.
-"""
-
 import requests
 from requests.auth import HTTPBasicAuth
 import json
@@ -47,29 +45,29 @@ def restconf_get(resource):
     if response.status_code == 200:
         return response.json()
     elif response.status_code == 204:
-        print(f"[ℹ️] {resource}: No content (empty dataset).")
+        print(f"[i] {resource}: No content (empty dataset).")
     elif response.status_code == 404:
-        print(f"[⚠️] {resource}: Not supported on this version.")
+        print(f"[w] {resource}: Not supported on this version.")
     else:
         print(f"[!] HTTP {response.status_code} for {resource}")
     return None
 
 
-print("\n🔍 Connecting to router via RESTCONF...\n")
+print("\nNow connecting to router via RESTCONF...\n")
 
-# === 1️⃣ Hostname ===
+# === [1] Hostname ===
 data = restconf_get("Cisco-IOS-XE-native:native/hostname")
 if data:
     hostname = data.get("Cisco-IOS-XE-native:hostname", "N/A")
     print(f"Hostname: {hostname}")
 
-# === 2️⃣ Platform / Version ===
+# === [2] Platform / Version ===
 data = restconf_get("Cisco-IOS-XE-platform-software-oper:platform-software-version")
 if data:
     info = data["Cisco-IOS-XE-platform-software-oper:platform-software-version"]
     print(f"Platform: {info.get('platform','unknown')} | Version: {info.get('version','N/A')}")
 
-# === 3️⃣ Inventory (Hardware Components) ===
+# === [3] Inventory (Hardware Components) ===
 inv_data = restconf_get("Cisco-IOS-XE-platform-oper:components")
 if inv_data:
     comps = inv_data.get("Cisco-IOS-XE-platform-oper:components", {}).get("component", [])
@@ -81,7 +79,7 @@ if inv_data:
         serial = c.get("serial-number", "")
         print(f"- {name}: {desc} | Model={model} | SN={serial}")
 
-# === 4️⃣ Interfaces ===
+# === [4] Interfaces ===
 int_data = restconf_get("ietf-interfaces:interfaces/interface")
 if int_data:
     print("\nInterfaces:")
@@ -91,7 +89,7 @@ if int_data:
         iplist = ", ".join([ip["ip"] for ip in ipv4s]) if ipv4s else "no IP"
         print(f"- {i['name']}: {desc} ({iplist})")
 
-# === 5️⃣ Routing (OSPF example) ===
+# === [5] Routing (OSPF example) ===
 ospf = restconf_get("Cisco-IOS-XE-ospf-oper:ospf-oper-data")
 if ospf:
     ospf_data = ospf.get("Cisco-IOS-XE-ospf-oper:ospf-oper-data", {}).get("ospf-processes", [])
@@ -102,7 +100,7 @@ if ospf:
         areas = proc.get("ospf-area", [])
         print(f"- Process {pid} | Router ID {rid} | Areas: {[a['area-id'] for a in areas]}")
 
-# === 6️⃣ Neighbors (CDP/LLDP) ===
+# === [6] Neighbors (CDP/LLDP) ===
 print("\nNeighbors:")
 cdp = restconf_get("Cisco-IOS-XE-cdp-oper:cdp-neighbor-details")
 if cdp:
@@ -116,4 +114,4 @@ if lldp:
     for n in neigh:
         print(f"- LLDP: {n['device-id']} via {n['local-intf-name']}")
 
-print("\n✅ RESTCONF inventory query complete.\n")
+print("\nOK: RESTCONF inventory query complete.\n")
