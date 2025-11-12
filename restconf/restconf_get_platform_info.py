@@ -37,7 +37,7 @@ def restconf_get(resource):
         return None
 
 
-# === 1️⃣ Get hostname ===
+# === [1] Get hostname ===
 hostname_data = restconf_get("ietf-system:system")
 if hostname_data:
     hostname = hostname_data["ietf-system:system"]["hostname"]
@@ -48,17 +48,18 @@ if hostname_data:
     print(f"Hostname: {hostname}")
 
 
-# === 2️⃣ Get platform info ===
+# === [2] Get platform info ===
 platform_data = restconf_get("Cisco-IOS-XE-native:native/version")
 if platform_data:
     version = platform_data["Cisco-IOS-XE-native:version"]
     print(f"IOS XE Version: {version}")
 
-# === 3️⃣ Get interfaces ===
+# === [3] Get interfaces ===
 interfaces_data = restconf_get("ietf-interfaces:interfaces/interface")
 if interfaces_data:
     print("\nInterfaces:")
     for intf in interfaces_data["ietf-interfaces:interface"]:
         print(f"- {intf['name']} : {intf.get('description', 'no description')}")
 
-print("\n✅ RESTCONF query complete.")
+print("\nOK: RESTCONF query complete.")
+
