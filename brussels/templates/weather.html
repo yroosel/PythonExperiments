@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="background"></div>
+    <h1>Weather Forecast for Brussels</h1>
+
+    <h2>Today's Weather:</h2>
+    <p>Temperature: {{ current['current']['temp_c'] }} °C</p>
+    <p>Condition: {{ current['current']['condition']['text'] }}</p>
+    <img src="{{ current['current']['condition']['icon'] }}" alt="weather_icon">
+
+    <h2>Next 3 Days Forecast:</h2>
+    <ul>
+        {% for day in daily %}
+        <li>
+            <strong>Date: {{ day['date'] }}</strong>
+            <p>Max Temperature: {{ day['day']['maxtemp_c'] }} °C</p>
+            <p>Min Temperature: {{ day['day']['mintemp_c'] }} °C</p>
+            <p>Condition: {{ day['day']['condition']['text'] }}</p>
+            <img src="{{ day['day']['condition']['icon'] }}" alt="weather_icon">
+        </li>
+        {% endfor %}
+    </ul>
+
+    <button onclick="window.location.href='/'">Back to Map</button>
+</body>
+</html>
