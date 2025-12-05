@@ -19,7 +19,7 @@ echo "Testing login v1"
 curl -k -X POST -F 'username='$INSECURE_USER -F 'password='$INSECURE_PW 'https://127.0.0.1:5555/login/v1'
 #### Replace fixed username with a variable SECURE_USER and a variable passord SECURE_PW
 echo "Creating new user v2 secure"
-curl -k -X POST -F 'username=$SECURE_USER' -F 'password=$SECURE_PW' 'https://127.0.0.1:5555/signup/v2'
+curl -k -X POST -F 'username='$SECURE_USER -F 'password='$SECURE_PW 'https://127.0.0.1:5555/signup/v2'
 echo "Testing login v2"
-curl -k -X POST -F 'username=$SECURE_USER' -F 'password=$SECURE_PW' 'https://127.0.0.1:5555/login/v2'
+curl -k -X POST -F 'username='$SECURE_USER -F 'password='$SECURE_PW 'https://127.0.0.1:5555/login/v2'
 
