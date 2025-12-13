@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 import sqlite3
-# Advice: create safer version the hashes passwords
+# Advice: create safer version that hashes passwords
 # Question: Is this code safe against SQL INjection ?
 
 app = Flask(__name__)
