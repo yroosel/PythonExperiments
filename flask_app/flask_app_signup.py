@@ -4,7 +4,7 @@ import sqlite3
 app = Flask(__name__)
 
 # Database needs to exist prior to running this script
-db_name = "users.db"
+db_name = "user.db"
 
 @app.route('/signup/v1', methods=['GET', 'POST'])
 def signup_v1():
