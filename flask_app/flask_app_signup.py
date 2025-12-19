@@ -14,9 +14,7 @@ def signup_v1():
         return render_template("signup.html")
 
     # POST request
-    db_conn = sqlite3.connect(db_name)
-    c = db_conn.cursor()
-
+    
     try:
         username_entered = request.form.get('username')
         password_entered = request.form.get('password')
@@ -24,6 +22,8 @@ def signup_v1():
         if not username_entered or not password_entered:
             return "Missing username or password", 400
 
+        db_conn = sqlite3.connect(db_name)
+        c = db_conn.cursor()
         c.execute(
             "INSERT INTO USER_PLAIN (USERNAME, PASSWORD) VALUES (?, ?)",
             (username_entered, password_entered)
