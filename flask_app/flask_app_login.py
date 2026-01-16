@@ -50,8 +50,10 @@ def verify_plain(username, password):
 
 @microweb_app.route('/login/v1', methods=['GET', 'POST'])
 def login_v1():
-    error = None
+    if request.method == 'GET':
+        return render_template("login.html")
     if request.method == 'POST':
+        error = None
         if verify_plain(request.form['username'], request.form['password']):
             error = 'Login success, but insecure\n'
         else:
