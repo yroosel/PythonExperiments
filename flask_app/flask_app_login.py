@@ -1,114 +1,183 @@
-# NOT FINISHED
-from flask import Flask
-from flask import request
-from flask import render_template
+from flask import Flask, request, render_template
 import sqlite3
 import hashlib
 
-microweb_app = Flask(__name__)
+app = Flask(__name__)
+DB_NAME = "user.db"
 
-db_name = 'user.db'
+# --------------------------------------------------
+# HTML PAGES IN TEMPLATES FOLDER
+# --------------------------------------------------
 
-#### RE-INTIALIZING DATABASE => deleting all records from test database
-@microweb_app.route('/delete/all', methods=['POST', 'DELETE'])
+# --------------------------------------------------
+# login_v1.html login_v2.html signup_v1.html signup_v1.html
+# (pages must call the correct function)
+# --------------------------------------------------
+def get_db():
+    return sqlite3.connect(DB_NAME)
+
+def init_db():
+    """
+    Initialize database and tables if they do not exist.
+    This makes the application robust for first run,
+    Docker containers, CI/CD pipelines, etc.
+    """
+    db = get_db()
+    c = db.cursor()
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS USER_PLAIN (
+            USERNAME TEXT PRIMARY KEY,
+            PASSWORD TEXT NOT NULL
+        )
+    """)
+
+    c.execute("""
+        CREATE TABLE IF NOT EXISTS USER_HASH (
+            USERNAME TEXT PRIMARY KEY,
+            HASH TEXT NOT NULL
+        )
+    """)
+
+    db.commit()
+    db.close()
+
+# --------------------------------------------------
+# RESET DATABASE (TEST ONLY)
+# --------------------------------------------------
+@app.route("/delete/all", methods=["GET" , "POST", "DELETE"])
+# A browser that opens a URL manually always sends an HTTP GET request. 
+# Using GET for destructive actions is not RESTful and is insecure, 
+# but it is deliberately allowed here for testing purposes.
+
 def delete_all():
-    db_conn = sqlite3.connect(db_name)
-    c = db_conn.cursor()
-    sql_statement = "DELETE FROM USER_PLAIN ; "
-    c.execute(sql_statement)
-    sql_statement = "DELETE FROM USER_HASH ; "
-    c.execute(sql_statement)
-    db_conn.commit()
-    db_conn.close()
-    return "Test records deleted\n"
+    db = get_db()
+    c = db.cursor()
 
-#### CLEAR TEXT PASSWORDS, INSECURE => signup, verify, login
-@microweb_app.route('/signup/v1', methods=['POST'])
+    c.execute("DELETE FROM USER_PLAIN")
+    c.execute("DELETE FROM USER_HASH")
+
+    db.commit()
+    db.close()
+    return "All test records deleted\n"
+
+# ==================================================
+# V1 — PLAINTEXT PASSWORDS (INSECURE, EDUCATIONAL)
+# ==================================================
+
+@app.route("/signup/v1", methods=["GET", "POST"])
 def signup_v1():
-    db_conn = sqlite3.connect(db_name)
-    c = db_conn.cursor()
-    sql_statement = "CREATE TABLE IF NOT EXISTS USER_PLAIN (USERNAME TEXT PRIMARY KEY NOT NULL, PASSWORD TEXT NOT NULL); "
-    c.execute(sql_statement)
-    db_conn.commit()
+    if request.method == "GET":
+        return render_template("signup_v1.html")
+
+    db = get_db()
+    c = db.cursor()
+
     try:
-        sql_statement = "INSERT INTO USER_PLAIN (USERNAME, PASSWORD) VALUES ('{0}' , '{1}')".format(request.form['username'] , request.form['password'])
-        c.execute(sql_statement)
-        db_conn.commit()
+        c.execute(
+            "INSERT INTO USER_PLAIN (USERNAME, PASSWORD) VALUES (?, ?)",
+            (request.form["username"], request.form["password"])
+        )
+        db.commit()
+        return "V1 signup successful (plaintext password)\n"
+
     except sqlite3.IntegrityError:
-        return "Username has been registered, but is insecure\n"
-    return "Signup success, but insecure\n"
+        return "Username already exists\n"
+
+    finally:
+        db.close()
 
 def verify_plain(username, password):
-    db_conn = sqlite3.connect(db_name)
-    c = db_conn.cursor()
-    sql_query = "SELECT PASSWORD FROM USER_PLAIN WHERE USERNAME = '{0}'".format(username)
-    c.execute(sql_query)
-    records = c.fetchone()
-    db_conn.close()
-    if not records:
-        return False
-    return records[0] == password
+    db = get_db()
+    c = db.cursor()
 
-@microweb_app.route('/login/v1', methods=['GET', 'POST'])
+    c.execute(
+        "SELECT PASSWORD FROM USER_PLAIN WHERE USERNAME = ?",
+        (username,)
+    )
+    record = c.fetchone()
+    db.close()
+
+    return record is not None and record[0] == password
+
+@app.route("/login/v1", methods=["GET", "POST"])
 def login_v1():
-    if request.method == 'GET':
-        return render_template("login.html")
-    if request.method == 'POST':
-        error = None
-        if verify_plain(request.form['username'], request.form['password']):
-            error = 'Login success, but insecure\n'
-        else:
-            error = 'Invalid username/password\n'
-    else:   
-        error = 'Invalid Method\n'
-    return error
+    if request.method == "GET":
+        return render_template("login_v1.html")
 
-#### PASSWORD HASHING => signup, verify, login
-@microweb_app.route('/signup/v2', methods=['POST'])
+    if verify_plain(request.form["username"], request.form["password"]):
+        return "V1 login successful (insecure)\n"
+
+    return "Invalid username or password\n"
+
+# ==================================================
+# V2 — HASHED PASSWORDS (SECURE)
+# ==================================================
+
+@app.route("/signup/v2", methods=["GET", "POST"])
 def signup_v2():
-    db_conn = sqlite3.connect(db_name)
-    c = db_conn.cursor()
-    sql_statement = "CREATE TABLE IF NOT EXISTS USER_HASH (USERNAME TEXT PRIMARY KEY NOT NULL, HASH TEXT NOT NULL); "
-    c.execute(sql_statement)
-    db_conn.commit()
+    if request.method == "GET":
+        return render_template("signup_v2.html")
+
+    db = get_db()
+    c = db.cursor()
+
     try:
-        hash_value = hashlib.sha256(request.form['password'].encode()).hexdigest()
-        sql_statement = "INSERT INTO USER_HASH VALUES ('{0}' , '{1}' ) ".format(request.form['username'], hash_value)
-        c.execute(sql_statement)
-        db_conn.commit()
+        password_hash = hashlib.sha256(
+            request.form["password"].encode()
+        ).hexdigest()
+
+        c.execute(
+            "INSERT INTO USER_HASH (USERNAME, HASH) VALUES (?, ?)",
+            (request.form["username"], password_hash)
+        )
+        db.commit()
+        return "V2 signup successful (hashed password)\n"
+
     except sqlite3.IntegrityError:
-        return "Username has been registered\n"
-    print('username: ' , request.form['username'], ' password: ', request.form['password'], ' hash: ', hash_value)
-    return "Secure signup succeeded\n"
+        return "Username already exists\n"
+
+    finally:
+        db.close()
 
 def verify_hash(username, password):
-    db_conn = sqlite3.connect(db_name)
-    c = db_conn.cursor()
-    sql_query = "SELECT HASH FROM USER_HASH WHERE USERNAME = '{0}'".format(username)
-    c.execute(sql_query)
-    records = c.fetchone()
-    db_conn.close()
-    if not records:
+    db = get_db()
+    c = db.cursor()
+
+    c.execute(
+        "SELECT HASH FROM USER_HASH WHERE USERNAME = ?",
+        (username,)
+    )
+    record = c.fetchone()
+    db.close()
+
+    if not record:
         return False
-    return records[0] == hashlib.sha256(password.encode()).hexdigest()
 
-@microweb_app.route('/login/v2', methods=['GET', 'POST'])
+    return record[0] == hashlib.sha256(password.encode()).hexdigest()
+
+@app.route("/login/v2", methods=["GET", "POST"])
 def login_v2():
-    error = None
-    if request.method == 'POST':
-        if verify_hash(request.form['username'], request.form['password']):
-            error = 'Login sucess, using hash\n'
-        else:
-            error = 'Invalid username/password\n' 
-    else:
-        error = 'Invalid method\n'
-    return error
+    if request.method == "GET":
+        return render_template("login_v2.html")
 
-#### HOME
-@microweb_app.route('/')
-def main():
+    if verify_hash(request.form["username"], request.form["password"]):
+        return "V2 login successful (secure)\n"
+
+    return "Invalid username or password\n"
+
+
+# --------------------------------------------------
+# HOME
+# --------------------------------------------------
+@app.route("/")
+def home():
     return render_template("index.html")
 
-#### MAIN
+
+# --------------------------------------------------
+# MAIN
+# --------------------------------------------------
 if __name__ == "__main__":
-    microweb_app.run(host="0.0.0.0", port=5555, ssl_context='adhoc')
+    init_db()  # <-- CRUCIAL CHANGE
+    app.run(host="0.0.0.0", port=5555, ssl_context="adhoc")
