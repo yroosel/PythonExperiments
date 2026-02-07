@@ -1,23 +1,14 @@
-### CREATE LOOPBACK IF
 from netmiko import ConnectHandler
-IP_ADDRESS = "192.168.56.101" #"Get IP Address"
-sshCli = ConnectHandler(
-    device_type="cisco_ios",
-    host=IP_ADDRESS,
-    port="22",
-    
-    username="cisco",
-    password="cisco123!"
-    )
-config_commands = (
-    'interface loopback 101' , 'ip address 10.1.0.101 255.255.255.0'
-    )
-print("Initial Interface Config")
-output=sshCli.send_command("show ip interface brief")
-print(output)
-print("Configuring Interface")
-output=sshCli.send_config_set(config_commands)
-print(output)
-output=sshCli.send_command("show ip interface brief")
-print("Final Interface Config")
-print(output)
+
+# variables
+HOST="192.168.56.xxx"; USER="Get Username"; PASS="Get Password"; PORT=22; DEV="cisco_ios"
+INTF="loopback 111"; IP="10.11.111.1"; MASK="255.255.255.255"
+SHOW="show ip interface brief"; CMDS=[f"int {INTF}", f"ip address {IP} {MASK}"]
+
+ssh=ConnectHandler(device_type=DEV, host=HOST, port=PORT, username=USER, password=PASS)
+
+print("BEFORE"); print(ssh.send_command(SHOW))
+ssh.send_config_set(CMDS)
+print("AFTER"); print(ssh.send_command(SHOW))
+
+ssh.disconnect()
