@@ -9,10 +9,10 @@ from netmiko import ConnectHandler
 ### EXEC
 sshCli = ConnectHandler(
     device_type="cisco_ios",
-    host="192.168.56.101",
+    host="192.168.56.xxx",
     port="22",
-    username="cisco",
-    password="cisco123!"
+    username="Get Username",
+    password="Get Password"
     )
 output=sshCli.send_command("show version")
 for line in output.splitlines():
