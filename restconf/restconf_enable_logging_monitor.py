@@ -1,16 +1,11 @@
-IP_ADDRESS="192.168.56.103"  ### "10.10.20.48"
-RESTCONF_USERNAME="cisco"  ### "developer"
-RESTCONF_PASSWORD="cisco123!" ### "C1sco12345"
-sshCli = ConnectHandler(
-    device_type="cisco_ios",
-    host=IP_ADDRESS,
-    port="22",
-    username=RESTCONF_USERNAME,
-    password=RESTCONF_PASSWORD
-    )
-config_commands = (
-    'logging monitor' ,
-    )
-output=sshCli.send_config_set(config_commands)
-output=sshCli.send_command("show logging")
-print(output)
+# Configure logging severity
+import requests
+IP_ADDRESS="192.168.56.xxx"  
+RESTCONF_USERNAME="Get uername"  
+RESTCONF_PASSWORD="Get Password!" 
+url = f"https://{IP_ADDRESS}/restconf/data/Cisco-IOS-XE-native:native/logging"
+auth = (RESTCONF_USERNAME,RESTCONF_PASSWORD)
+headers = { "Content-Type": "application/yang-data+json", "Accept": "application/yang-data+json" }
+payload = { "Cisco-IOS-XE-native:logging": { "monitor": { "severity": "informational"  } } }
+r = requests.put(url, auth=auth, headers=headers, json=payload, verify=False)
+print(r.status_code, r.text)
