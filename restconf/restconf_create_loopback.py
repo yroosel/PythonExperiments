@@ -53,7 +53,7 @@ if response_put.status_code >= 300:
 # --- Retrieve interfaces ---
 response_get = requests.get(
     get_url,
-    auth=auth,
+    auth=AUTH,
     headers=HEADERS,
     verify=False
 )
