@@ -1,17 +1,41 @@
 import requests
+import urllib3
 from requests.auth import HTTPBasicAuth
 
-requests.packages.urllib3.disable_warnings()
+urllib3.disable_warnings()
 
-CONNECTION_PARAMETERS = {HOST: "Your Host", USER: "Your User", PASS:"Your Pass"}
+# Connection parameters
+CONNECTION_PARAMETERS = {
+    "HOST": "Your Host",
+    "USER": "Your User",
+    "PASS": "Your Pass"
+}
 
-url = f"https://{CONNECTION_PARAMETERS[HOST]}/restconf/data/ietf-interfaces:interfaces"
+# Base RESTCONF URL
+BASE = f"https://{CONNECTION_PARAMETERS['HOST']}/restconf"
 
-verify_ssl = False
-headers = {"Accept": "application/yang-data+json"}
-auth = HTTPBasicAuth(CONNECTION_PARAMETERS[USER], CONNECTION_PARAMETERS[PASS])
+# Headers
+HEADERS = {
+    "Accept": "application/yang-data+json"
+}
 
-response = requests.get(url, headers=headers, auth=auth, verify=verify_ssl)
+# Authentication
+AUTH = HTTPBasicAuth(
+    CONNECTION_PARAMETERS["USER"],
+    CONNECTION_PARAMETERS["PASS"]
+)
 
+# SSL verification
+VERIFY_SSL = False
+
+# --- Retrieve RESTCONF root information ---
+response = requests.get(
+    BASE,
+    headers=HEADERS,
+    auth=AUTH,
+    verify=VERIFY_SSL
+)
+
+# --- Output ---
+print("HTTP Status:", response.status_code)
 print(response.text)
-print(response.status_code)
