@@ -1,62 +1,18 @@
-import json
-import requests
-import urllib3
-
+import json, requests, urllib3
 urllib3.disable_warnings()
 
-# Connection parameters
-CONNECTION_PARAMETERS = {
-    "HOST": "Your Host",
-    "USER": "Your User",
-    "PASS": "Your Pass"
-}
+PARAMS = {"HOST":"YOUR HOST","USER":"YOUR USER","PASS":"YOUR PASS"}
+HEADERS = {"Accept":"application/yang-data+json","Content-Type":"application/yang-data+json"}
 
-# RESTCONF headers
-HEADERS = {
-    "Accept": "application/yang-data+json",
-    "Content-Type": "application/yang-data+json"
-}
+cfg = json.load(open("loopback_config.json"))
+name = cfg["ietf-interfaces:interface"]["name"]
 
-# Load configuration from JSON file
-with open("loopback_config.json") as f:
-    config = json.load(f)
+base = f"https://{PARAMS['HOST']}/restconf/data"
+auth = (PARAMS["USER"], PARAMS["PASS"])
 
-# Extract interface name
-interface_name = config["ietf-interfaces:interface"]["name"]
+r = requests.put(f"{base}/ietf-interfaces:interfaces/interface={name}", json=cfg, auth=auth, headers=HEADERS, verify=False)
+print("PUT:", r.status_code, r.text if r.status_code >= 300 else "")
 
-# RESTCONF URLs
-base_url = f"https://{CONNECTION_PARAMETERS['HOST']}/restconf/data"
-
-put_url = f"{base_url}/ietf-interfaces:interfaces/interface={interface_name}"
-get_url = f"{base_url}/ietf-interfaces:interfaces"
-
-# Authentication
-AUTH = (
-    CONNECTION_PARAMETERS["USER"],
-    CONNECTION_PARAMETERS["PASS"]
-)
-
-# --- Configure interface ---
-response_put = requests.put(
-    put_url,
-    json=config,
-    auth=AUTH,
-    headers=HEADERS,
-    verify=False
-)
-
-print("PUT status:", response_put.status_code)
-
-if response_put.status_code >= 300:
-    print("Error:", response_put.text)
-
-# --- Retrieve interfaces ---
-response_get = requests.get(
-    get_url,
-    auth=AUTH,
-    headers=HEADERS,
-    verify=False
-)
-
-print("GET status:", response_get.status_code)
-print(response_get.text)
+g = requests.get(f"{base}/ietf-interfaces:interfaces", auth=auth, headers=HEADERS, verify=False)
+print("GET:", g.status_code)
+print(g.text)
