@@ -31,7 +31,7 @@ put_url = f"{base_url}/ietf-interfaces:interfaces/interface={interface_name}"
 get_url = f"{base_url}/ietf-interfaces:interfaces"
 
 # Authentication
-auth = (
+AUTH = (
     CONNECTION_PARAMETERS["USER"],
     CONNECTION_PARAMETERS["PASS"]
 )
@@ -40,7 +40,7 @@ auth = (
 response_put = requests.put(
     put_url,
     json=config,
-    auth=auth,
+    auth=AUTH,
     headers=HEADERS,
     verify=False
 )
