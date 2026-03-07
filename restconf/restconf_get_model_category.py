@@ -1,59 +1,31 @@
-import requests
-import urllib3
+import requests, urllib3
 from requests.auth import HTTPBasicAuth
-
 urllib3.disable_warnings()
 
-# Connection parameters
-CONNECTION_PARAMETERS = {
-    "HOST": "YOUR HOST",
-    "USER": "YOUR USER",
-    "PASS": "YOUR PASS"
-}
+PARAMS = {"HOST":"YOUR HOST","USER":"YOUR USER","PASS":"YOUR PASS"}
+BASE = f"https://{PARAMS['HOST']}/restconf/data"
+auth = HTTPBasicAuth(PARAMS["USER"], PARAMS["PASS"])
+headers = {"Accept":"application/yang-data+json"}
 
-# Base RESTCONF URL
-BASE = f"https://{CONNECTION_PARAMETERS['HOST']}/restconf/data"
+# Hostname
+hostname = requests.get(f"{BASE}/Cisco-IOS-XE-native:native/hostname",
+                        auth=auth, headers=headers, verify=False
+                        ).json().get("Cisco-IOS-XE-native:hostname","unknown")
 
-# Headers
-HEADERS = {
-    "Accept": "application/yang-data+json"
-}
+# Hardware / version
+hw = requests.get(f"{BASE}/Cisco-IOS-XE-device-hardware-oper:device-hardware-data",
+                  auth=auth, headers=headers, verify=False
+                  ).json()["Cisco-IOS-XE-device-hardware-oper:device-hardware-data"]
 
-# Authentication
-AUTH = HTTPBasicAuth(
-    CONNECTION_PARAMETERS["USER"],
-    CONNECTION_PARAMETERS["PASS"]
-)
+ios = hw["device-hardware"]["device-system-data"]["software-version"]
+ios_version = ios.split("Version ")[1].split(",")[0]
 
-# --- Retrieve hostname ---
-url_host = f"{BASE}/Cisco-IOS-XE-native:native/hostname"
+inv = hw["device-hardware"]["device-inventory"][0]
 
-r1 = requests.get(url_host, auth=AUTH, headers=HEADERS, verify=False)
-hostname = r1.json().get("Cisco-IOS-XE-native:hostname", "unknown")
-
-# --- Retrieve hardware information ---
-url_ver = f"{BASE}/Cisco-IOS-XE-device-hardware-oper:device-hardware-data"
-
-r2 = requests.get(url_ver, auth=AUTH, headers=HEADERS, verify=False)
-
-hardware = r2.json()["Cisco-IOS-XE-device-hardware-oper:device-hardware-data"]
-
-# IOS version
-full_version = hardware["device-hardware"]["device-system-data"]["software-version"]
-ios_version = full_version.split("Version ")[1].split(",")[0]
-
-# Device inventory
-inventory = hardware["device-hardware"]["device-inventory"][0]
-
-model = inventory.get("part-number", "unknown")
-serial = inventory.get("serial-number", "unknown")
-category = inventory.get("hw-description", "unknown")
-
-# --- Output ---
 print("\nDevice Information")
 print("------------------")
-print("Hostname       :", hostname)
-print("IOS Version    :", ios_version)
-print("Model          :", model)
-print("Serial Number  :", serial)
-print("Device Category:", category)
+print("Hostname :", hostname)
+print("IOS      :", ios_version)
+print("Model    :", inv.get("part-number","unknown"))
+print("Serial   :", inv.get("serial-number","unknown"))
+print("Category :", inv.get("hw-description","unknown"))
