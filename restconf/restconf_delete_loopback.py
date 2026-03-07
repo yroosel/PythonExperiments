@@ -52,7 +52,7 @@ if response_delete.status_code >= 300:
 # --- Retrieve interfaces to verify ---
 response_get = requests.get(
     get_url,
-    auth=auth,
+    auth=AUTH,
     headers=HEADERS,
     verify=False
 )
