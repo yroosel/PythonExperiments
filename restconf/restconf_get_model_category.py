@@ -1,23 +1,40 @@
 import requests
 import urllib3
+from requests.auth import HTTPBasicAuth
 
 urllib3.disable_warnings()
 
-HOST = "Your Host"
-USER = "Your User"
-PASS = "Your Pass"
+# Connection parameters
+CONNECTION_PARAMETERS = {
+    "HOST": "YOUR HOST",
+    "USER": "YOUR USER",
+    "PASS": "YOUR PASS"
+}
 
-BASE = f"https://{HOST}/restconf/data"
-HEADERS = {"Accept": "application/yang-data+json"}
+# Base RESTCONF URL
+BASE = f"https://{CONNECTION_PARAMETERS['HOST']}/restconf/data"
 
-# --- Hostname ---
+# Headers
+HEADERS = {
+    "Accept": "application/yang-data+json"
+}
+
+# Authentication
+AUTH = HTTPBasicAuth(
+    CONNECTION_PARAMETERS["USER"],
+    CONNECTION_PARAMETERS["PASS"]
+)
+
+# --- Retrieve hostname ---
 url_host = f"{BASE}/Cisco-IOS-XE-native:native/hostname"
-r1 = requests.get(url_host, auth=(USER, PASS), headers=HEADERS, verify=False)
+
+r1 = requests.get(url_host, auth=AUTH, headers=HEADERS, verify=False)
 hostname = r1.json().get("Cisco-IOS-XE-native:hostname", "unknown")
 
-# --- Hardware / Version ---
+# --- Retrieve hardware information ---
 url_ver = f"{BASE}/Cisco-IOS-XE-device-hardware-oper:device-hardware-data"
-r2 = requests.get(url_ver, auth=(USER, PASS), headers=HEADERS, verify=False)
+
+r2 = requests.get(url_ver, auth=AUTH, headers=HEADERS, verify=False)
 
 hardware = r2.json()["Cisco-IOS-XE-device-hardware-oper:device-hardware-data"]
 
