@@ -3,7 +3,7 @@ from requests.auth import HTTPBasicAuth
 
 requests.packages.urllib3.disable_warnings()
 
-CONNECTION_PARAMETERS = {"HOST": "44.201.40.38", "USER": "npe-restconf", "PASS": "C1sco12345"}
+CONNECTION_PARAMETERS = {"HOST": "YOUR HOST", "USER": "YOUR USER", "PASS": "YOUR PASS"}
 
 url = f"https://{CONNECTION_PARAMETERS['HOST']}/restconf/"
 auth = HTTPBasicAuth(CONNECTION_PARAMETERS["USER"], CONNECTION_PARAMETERS["PASS"])
