@@ -8,8 +8,6 @@ v_username = "YOUR USER"
 v_password = "YOUR PASS"
 v_secret = "YOUR PASS"
 
-from netmiko import ConnectHandler
-
 device = {
 "device_type": v_device_type,
 "host": v_host,
