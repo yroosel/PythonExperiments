@@ -1,5 +1,4 @@
 from netmiko import ConnectHandler
-import re
 
 device = {
 "device_type": "your_device_type",
