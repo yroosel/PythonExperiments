@@ -8,8 +8,8 @@ from netmiko import ConnectHandler
 ### VAR
 RTR="sandbox-iosxe-recomm-1.cisco.com"
 SSH_PORT="22"
-USER="developer" 
-PW="lastorangerestoreball8876"
+USER="Your User" 
+PW="Your Pass"
 ### EXEC
 sshCli = ConnectHandler(
     device_type="cisco_ios",
