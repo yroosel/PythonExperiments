@@ -28,7 +28,7 @@ hostname_match = re.search(r"(\S+) uptime is", output)
 hostname = hostname_match.group(1) if hostname_match else "Unknown"
 
 # Extract model
-model_match = re.search(r"Cisco\s+(\S+)\s+\(", output)
+model_match = re.search(r"(?i)cisco\s+(\S+)\s+\(", output)
 model = model_match.group(1) if model_match else "Unknown"
 
 # Extract serial number
