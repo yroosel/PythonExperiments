@@ -1,0 +1,8 @@
+<rpc message-id="101101101101">
+  <get-config>
+    <source><running/></source>
+    <filter type="subtree">
+      <interfaces/>
+    </filter>
+  </get-config>
+</rpc>

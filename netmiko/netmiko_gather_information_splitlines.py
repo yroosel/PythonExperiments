@@ -15,6 +15,14 @@ device = {
     "secret": v_secret,
 }
 
+device = {
+"device_type": "cisco_ios",
+"host": "192.168.0.200",
+"username": "cisco",
+"password": "cisco123!",
+"secret": "cisco123!",
+}
+
 # Connect to device
 connection = ConnectHandler(**device)
 connection.enable()
@@ -34,7 +42,7 @@ for line in lines:
     if "uptime is" in line:
         hostname = line.split()[0]
 
-    if "Cisco" in line and "(" in line:
+    if "cisco" in line and "(" in line:
         parts = line.split()
         model = parts[1]
 

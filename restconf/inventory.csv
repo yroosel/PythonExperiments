@@ -1,0 +1,2 @@
+host,username,password,port_netconf,port_restconf,serial
+192.168.56.101,cisco,cisco123!,830,443,9ZN02OH8R0C

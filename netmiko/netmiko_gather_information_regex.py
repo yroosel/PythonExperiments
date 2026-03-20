@@ -16,6 +16,14 @@ device = {
 "secret": v_secret,
 }
 
+device = {
+"device_type": "cisco_ios",
+"host": "192.168.0.200",
+"username": "cisco",
+"password": "cisco123!",
+"secret": "cisco123!",
+}
+
 # Connect to device
 connection = ConnectHandler(**device)
 connection.enable()
@@ -28,7 +36,7 @@ hostname_match = re.search(r"(\S+) uptime is", output)
 hostname = hostname_match.group(1) if hostname_match else "Unknown"
 
 # Extract model
-model_match = re.search(r"Cisco\s+(\S+)\s+\(", output)
+model_match = re.search(r"(?i)cisco\s+(\S+)\s+\(", output)
 model = model_match.group(1) if model_match else "Unknown"
 
 # Extract serial number

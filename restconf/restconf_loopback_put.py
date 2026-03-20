@@ -5,7 +5,7 @@ import json
 import requests
 requests.packages.urllib3.disable_warnings()
 #### Step 2: Create the variables that will be the components of the request
-IP_ADDRESS="192.168.56.10x"  ### "10.10.20.48"
+IP_ADDRESS="192.168.56.10x"   
 RESTCONF_USERNAME="Your User" 
 RESTCONF_PASSWORD="Your Pw" 
 

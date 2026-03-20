@@ -3,13 +3,13 @@ import json
 import requests
 requests.packages.urllib3.disable_warnings()
 
-IP_HOST="192.168.56.10x"
-RESTCONF_USERNAME="Your Username"
-RESTCONF_PASSWORD="Your Password"
+IP_HOST="192.168.0.xxx"
+RESTCONF_USERNAME="cisco"
+RESTCONF_PASSWORD="cisco123!"
 
 DATA_FORMAT="application/yang-data+json"
 
-ACTION_REQUIRED = "PUT"  ### 
+### ACTION_REQUIRED = "PUT"  
 ACTION_REQUIRED = "DELETE"
 
 LOOPBACK_INTERFACE="Loopback199"

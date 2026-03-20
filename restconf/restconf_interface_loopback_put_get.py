@@ -1,6 +1,6 @@
 import json, requests, urllib3
 urllib3.disable_warnings()
-H="192.168.56.101"; U="cisco"; P="cisco123!"; F="application/yang-data+json"
+H="192.168.0.200"; U="cisco"; P="cisco123!"; F="application/yang-data+json"
 auth=(U,P); hdr={"Accept":F,"Content-type":F}
 cfg=json.load(open("loopback_config.json"))
 name=cfg["ietf-interfaces:interface"]["name"]

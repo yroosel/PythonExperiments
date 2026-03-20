@@ -2,6 +2,7 @@ import json, requests, urllib3
 urllib3.disable_warnings()
 
 PARAMS = {"HOST":"YOUR HOST","USER":"YOUR USER","PASS":"YOUR PASS"}
+PARAMS = {"HOST": "192.168.0.200", "USER": "cisco", "PASS": "cisco123!"}
 HEADERS = {"Accept":"application/yang-data+json","Content-Type":"application/yang-data+json"}
 
 cfg = json.load(open("loopback_config.json"))

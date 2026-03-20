@@ -8,6 +8,14 @@ device = {
 "secret": "your_secret",
 }
 
+device = {
+"device_type": "cisco_ios",
+"host": "192.168.0.200",
+"username": "cisco",
+"password": "cisco123!",
+"secret": "cisco123!",
+}
+
 # Connect to device
 connection = ConnectHandler(**device)
 connection.enable()

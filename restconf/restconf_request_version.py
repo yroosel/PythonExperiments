@@ -2,7 +2,7 @@ import requests
 from requests.auth import HTTPBasicAuth
 
 # The URL to make the request to
-url = 'https://192.168.56.103/restconf/'
+url = 'https://192.168.0.200/restconf/'
 
 # Custom headers for the request
 headers = {

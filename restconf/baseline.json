@@ -1,0 +1,17 @@
+{
+    "global": {
+      "system": { "hostname": "local" },
+      "logging": { "host": "127.0.0.1" },
+      "ntp": {
+        "servers": ["127.0.0.1"]
+      }
+    },
+    "devices": {
+      "9ZN02OH8R0C": {
+        "system": { "hostname": "CSR1kv" },
+        "interfaces": {
+          "GigabitEthernet1": { "address": "192.168.56.101/24", "enabled": true }
+        }
+      }
+    }
+  }

@@ -16,6 +16,14 @@ device = {
     "secret": v_secret,
 }
 
+device = {
+"device_type": "cisco_ios",
+"host": "192.168.0.200",
+"username": "cisco",
+"password": "cisco123!",
+"secret": "cisco123!",
+}
+
 # Connect to the device
 connection = ConnectHandler(**device)
 connection.enable()
@@ -30,7 +38,7 @@ output = connection.send_config_set(config_commands)
 print(output)
 
 # Save the configuration
-connection.save_config()
+# connection.save_config()
 
 # Verify banner
 output = connection.send_command("show running-config | include banner")

@@ -1,0 +1,8 @@
+<copy-config>
+  <target>
+    <startup/>
+  </target>
+  <source>
+    <running/>
+  </source>
+</copy-config>

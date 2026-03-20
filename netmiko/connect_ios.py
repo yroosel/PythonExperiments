@@ -8,6 +8,15 @@ device = {
 "secret": "your_sec",
 }
 
+# passwords only in an initial training environment
+device = {
+"device_type": "cisco_ios",
+"host": "10.101.11.152",
+"username": "cisco",
+"password": "cisco123!",
+"secret": "cisco123!",
+}
+
 connection = ConnectHandler(**device)
 connection.enable()
 

@@ -3,6 +3,7 @@ from requests.auth import HTTPBasicAuth
 urllib3.disable_warnings()
 
 PARAMS = {"HOST":"YOUR HOST","USER":"YOUR USER","PASS":"YOUR PASS"}
+PARAMS = {"HOST": "192.168.0.200", "USER": "cisco", "PASS": "cisco123!"}
 BASE = f"https://{PARAMS['HOST']}/restconf/data"
 auth = HTTPBasicAuth(PARAMS["USER"], PARAMS["PASS"])
 headers = {"Accept":"application/yang-data+json"}
@@ -18,3 +19,4 @@ hw = requests.get(f"{BASE}/Cisco-IOS-XE-device-hardware-oper:device-hardware-dat
 ver = hw["Cisco-IOS-XE-device-hardware-oper:device-hardware-data"]["device-hardware"]["device-system-data"]["software-version"]
 print("Hostname:", hostname)
 print("IOS Version:", ver.split("Version ")[1].split(",")[0])
+
