@@ -4,11 +4,11 @@ from netmiko import ConnectHandler
 import re
 
 v_device_type = "cisco_ios"
-v_host =  "192.168.56.101" 
+v_host =  "Your host" 
 v_ssh_port =  22
-v_username = "cisco"
-v_password = "cisco123!"
-v_secret = "cisco123!"
+v_username = "Your user"
+v_password = "Your PW"
+v_secret = "Your PW"
 
 from netmiko import ConnectHandler
 
