@@ -1,4 +1,6 @@
 # FSM
+# pip3 install netmiko ntc-templates
+# export NET_TEXTFSM=$(python3 -c "import ntc_templates; print(ntc_templates.__path__[0] + '/templates')")
 
 from netmiko import ConnectHandler
 import re
