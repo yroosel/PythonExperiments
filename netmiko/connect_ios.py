@@ -11,7 +11,7 @@ device = {
 # passwords only in an initial training environment
 device = {
 "device_type": "cisco_ios",
-"host": "10.101.11.152",
+"host": "192.168.56.101",
 "username": "cisco",
 "password": "cisco123!",
 "secret": "cisco123!",

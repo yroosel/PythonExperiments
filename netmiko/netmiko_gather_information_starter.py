@@ -10,7 +10,7 @@ device = {
 
 device = {
 "device_type": "cisco_ios",
-"host": "192.168.0.200",
+"host": "192.168.56.101",
 "username": "cisco",
 "password": "cisco123!",
 "secret": "cisco123!",
