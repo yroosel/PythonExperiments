@@ -17,10 +17,10 @@ def get_router_output(ip, username=None, password=None, port=22,
     return conn.send_command(command, use_textfsm=True)
 
 sh_ip_arp = get_router_output( 
-    '192.168.56.101', 
-    username='cisco', 
-    password='cisco123!', 
-    device_type='cisco_ios', 
+    'Your Host', 
+    username='Your User', 
+    password='Your Pw', 
+    device_type='Your Pw', 
     command='show ip arp' 
 )
 
