@@ -2,9 +2,9 @@
 # pip3 install netmiko ntc-templates
 # export NET_TEXTFSM=$(python3 -c "import ntc_templates; print(ntc_templates.__path__[0] + '/templates')")
 import netmiko
-v_host = '192.168.56.101'
-v_user = 'cisco'
-v_pass = 'cisco123!'
+v_host = 'Your IP'
+v_user = 'Your User'
+v_pass = 'Your Pass'
 
 class Cisco:
 
