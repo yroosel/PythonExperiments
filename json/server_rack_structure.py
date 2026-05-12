@@ -2,7 +2,7 @@ import json
 
 server_rack = {
  "rack": [
-      { "server": { "dev_id": "S10" , "server_name": "svr1" , "domain": "biasc.be", "ip-address": "10.2.3.11" ,
+      { "server": { "dev_id": "S100" , "server_name": "svr1" , "domain": "biasc.be", "ip-address": "10.2.3.11" ,
                      "os": "linux"  , "server_type": "vm" ,
                      "services": [   
                        {"service": "ad" , "service_type": "vm", "protocol": "tcp", "port": "389"},
@@ -11,7 +11,7 @@ server_rack = {
                     ]
                   }
       },
-      { "server": { "dev_id": "S20" , "server_name": "svr2" , "domain": "biasc.be", "ip-address": "10.2.3.12" ,
+      { "server": { "dev_id": "S200" , "server_name": "svr2" , "domain": "biasc.be", "ip-address": "10.2.3.12" ,
                     "os": "linux"  , "server_type": "vm" ,
                     "services": [   
                       {"service": "flask", "service_type": "vm", "protocol": "tcp", "port": "8089"  }, 
@@ -19,7 +19,7 @@ server_rack = {
                     ]     
                  }
       },
-      { "server": { "dev_id": "S30" , "server_name": "svr3" ,  "domain": "biasc.be" , "ip-address": "10.2.3.13",
+      { "server": { "dev_id": "S300" , "server_name": "svr3" ,  "domain": "biasc.be" , "ip-address": "10.2.3.13",
                     "os": "linux"  , "server_type": "vm" ,
                     "services": [   
                       {"service": "dns" , "service_type": "vm", "protocol": "tcp", "port": "8089" }, 
