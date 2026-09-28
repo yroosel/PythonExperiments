@@ -1,7 +1,7 @@
 import requests 
 import json 
 ### Access Token 12 hours: https://developer.webex.com/docs/api/getting-started (login required)
-access_token = "insert your own token"
+access_token = "Your Access Token"
 
 groups_struc = {
  "groups": [
@@ -32,7 +32,7 @@ groups_struc = {
    ]
 }
 
-url = 'https://api.ciscospark.com/v1/rooms'
+url = 'https://webexapis.com/v1/rooms'
 
 headers = {'Authorization': 'Bearer {}'.format(access_token),'Content-Type': 'application/json' }
 for rec in groups_struc["groups"]:
@@ -45,7 +45,6 @@ for rec in groups_struc["groups"]:
     for mbr in rec["group"]["members"]:
         room_id = NEW_SPACE_ID
         person_email = mbr["email"] 
-        url2 = 'https://api.ciscospark.com/v1/memberships'
+        url2 = 'https://webexapis.com/v1/memberships'
         payload_member = {'roomId': room_id, 'personEmail': person_email}
         res_member = requests.post(url2, headers=headers, json=payload_member)
-
