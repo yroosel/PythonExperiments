@@ -1,3 +1,5 @@
+### TASK
+### REPLACE "https://api.myip.com" by a working API service
 import requests, sys
 import datetime
 now = datetime.datetime.now()
