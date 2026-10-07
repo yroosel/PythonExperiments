@@ -1,3 +1,4 @@
+# Reserve a CML Sandbox prior to executing this script
 from netmiko import ConnectHandler
 
 routers = [
